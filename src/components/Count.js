@@ -2,7 +2,7 @@ import React from 'react'
 
 import './styles/count.css'
 
-export default function Count({setCurrQuestion}) {
+export default function Count({questionNumb, setCurrQuestion, showAnswers}) {
   const numbers = [];
   for(let i = 1; i <= 20; i++) {
     numbers.push(i);
@@ -13,11 +13,13 @@ export default function Count({setCurrQuestion}) {
       <div className="numbers-grid">
         {
           numbers.map((number) => {
-            return <button className="number" key={number} onClick={() => setCurrQuestion(number)}>{number}</button>
+            return <button className="number" key={number} 
+              onClick={() => setCurrQuestion(number)}
+            >{number}</button>
           })
         }
       </div>
-      <button className="submit-btn">Submit</button>
+      <button className="submit-btn" onClick={showAnswers}>Submit</button>
     </div>
   )
 }

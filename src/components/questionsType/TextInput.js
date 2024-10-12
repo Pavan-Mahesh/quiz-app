@@ -1,14 +1,19 @@
 import React from 'react'
 
-import QuestionList from './data/questions.js';
 import '../styles/question.css';
+import { quizQuestions } from './data/questions';
 
-export default function TextInput(props) {
+export default function TextInput({questionNumb, answers, updateAnswers}) {
+  const handleTextChange = (event) => {
+    const ans = event.target.value;
+    updateAnswers(questionNumb, ans);
+  }
+
   return (
     <div className="question-container">
-      <p className="question">{props.questionNumb}. A question from database?</p>
+      <p className="question">{questionNumb}. {quizQuestions[questionNumb].question}</p>
       <div className="option-container">
-        <input className="text-input-field" type="text" placeholder="Type your answere here" />
+        <input className="text-input-field" type="text" placeholder="Type your answere here" onChange={handleTextChange} value={answers[questionNumb]} />
       </div>
     </div>
   )

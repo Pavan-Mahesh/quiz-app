@@ -1,42 +1,51 @@
 import React from 'react'
 
-import QuestionList from './data/questions.js';
 import '../styles/question.css';
+import { quizQuestions } from './data/questions.js';
 
-export default function ImageBased(props) {
-  let ans = "";
+export default function ImageBased({questionNumb, answers, updateAnswers}) {
+  const options = quizQuestions[questionNumb].options;
+  let currAnswer = answers[questionNumb];
+
+  const notSelected = {
+    color: 'black',
+    backgroundColor: 'rgb(238, 249, 255)',
+    border: '1px solid rgb(189, 218, 244)'
+  }
+
+  const isSelected = {
+    color: 'rgb(35, 73, 46)',
+    backgroundColor: 'rgb(209, 233, 216)',
+    border: '1px solid rgb(209, 233, 216)'
+  }
+
   const handleBtnClick = (event) => {
-    if(event.target.innerText === ans) {
-      event.target.style.backgroundColor = 'rgb(238, 249, 255)';
-      event.target.style.color = 'black';
-      event.target.style.border = '1px solid rgb(189, 218, 244)';
-      ans = "";
+    if(currAnswer === event.target.innerText) {
+      currAnswer = "";
+      updateAnswers(questionNumb, currAnswer); 
     } else {
-      const optBtn = document.querySelectorAll('.option-btn');
-      optBtn.forEach(btn => {
-        btn.style.color = 'black';
-        btn.style.backgroundColor = 'rgb(238, 249, 255)';
-        btn.style.border = '1px solid rgb(189, 218, 244)';
-      });
-
-      event.target.style.color = 'rgb(35, 73, 46)';
-      event.target.style.backgroundColor = 'rgb(209, 233, 216)';
-      event.target.style.border = '1px solid rgb(209, 233, 216)';
-      ans = event.target.innerText;
+      currAnswer = event.target.innerText;
+      updateAnswers(questionNumb, currAnswer);
     }
   }
 
   return (
     <div className="question-container">
-      <p className="question">{props.questionNumb}. A question from database?</p>
+      <p className="question">{questionNumb}. {quizQuestions[questionNumb].question}</p>
       <div className="image-container">
-        <img className="image" src='./images/image.png' alt="Something went wrong"/>
+        <img className="image" src={quizQuestions[questionNumb].image} alt="Something went wrong"/>
       </div>
       <div className="image-option-container">
-        <button className="option-btn" id="option-a" onClick={handleBtnClick}>Options A</button>
-        <button className="option-btn" id="option-b" onClick={handleBtnClick}>Options B</button>
-        <button className="option-btn" id="option-c" onClick={handleBtnClick}>Options C</button>
-        <button className="option-btn" id="option-d" onClick={handleBtnClick}>Options D</button>
+        {
+          Object.keys(options).map(option => {
+            return (
+              <button className="option-btn" key={`option-${option}`}
+                onClick={handleBtnClick}
+                style={currAnswer === options[option] ? isSelected : notSelected}
+              >{options[option]}</button>
+            )
+          })
+        }
       </div>
     </div>
   )

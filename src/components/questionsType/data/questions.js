@@ -50,43 +50,23 @@ const quizQuestions = {
   },
 
   6: {
-    question: 'Q-6 True of False question',
-    options: {
-      a: 'True',
-      b: 'False'
-    }
+    question: 'Q-6 True of False question'
   },
 
   7: {
-    question: 'Q-7 True of False question',
-    options: {
-      a: 'True',
-      b: 'False'
-    }
+    question: 'Q-7 True of False question'
   },
 
   8: {
-    question: 'Q-8 True of False question',
-    options: {
-      a: 'True',
-      b: 'False'
-    }
+    question: 'Q-8 True of False question'
   },
 
   9: {
-    question: 'Q-9 True of False question',
-    options: {
-      a: 'True',
-      b: 'False'
-    }
+    question: 'Q-9 True of False question'
   },
 
   10: {
-    question: 'Q-10 True of False question',
-    options: {
-      a: 'True',
-      b: 'False'
-    }
+    question: 'Q-10 True of False question'
   },
 
   11: {
@@ -111,7 +91,7 @@ const quizQuestions = {
 
   16: {
     question: 'Q-16 Text input question',
-    image: './images/image-1',
+    image: './images/image-1.png',
     options: {
       a: 'Q-16 Option A',
       b: 'Q-16 Option B',
@@ -122,7 +102,7 @@ const quizQuestions = {
 
   17: {
     question: 'Q-17 Text input question',
-    image: './images/image-2',
+    image: './images/image-2.png',
     options: {
       a: 'Q-17 Option A',
       b: 'Q-17 Option B',
@@ -133,7 +113,7 @@ const quizQuestions = {
 
   18: {
     question: 'Q-18 Text input question',
-    image: './images/image-3',
+    image: './images/image-3.png',
     options: {
       a: 'Q-18 Option A',
       b: 'Q-18 Option B',
@@ -144,7 +124,7 @@ const quizQuestions = {
 
   19: {
     question: 'Q-19 Text input question',
-    image: './images/image-4',
+    image: './images/image-4.png',
     options: {
       a: 'Q-19 Option A',
       b: 'Q-19 Option B',
@@ -155,7 +135,7 @@ const quizQuestions = {
 
   20: {
     question: 'Q-20 Text input question',
-    image: './images/image-5',
+    image: './images/image-5.png',
     options: {
       a: 'Q-20 Option A',
       b: 'Q-20 Option B',

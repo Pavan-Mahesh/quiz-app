@@ -3,7 +3,10 @@ import React from 'react'
 import '../styles/question.css';
 import { quizQuestions } from './data/questions';
 
-export default function MCQ({questionNumb, answers}) {
+export default function MCQ({questionNumb, answers, updateAnswers}) {
+  const options = quizQuestions[questionNumb].options;
+  let currAnswer = answers[questionNumb];
+
   const notSelected = {
     color: 'black',
     backgroundColor: 'rgb(238, 249, 255)',
@@ -16,14 +19,30 @@ export default function MCQ({questionNumb, answers}) {
     border: '1px solid rgb(209, 233, 216)'
   }
 
+  const handleBtnClick = (event) => {
+    if(currAnswer === event.target.innerText) {
+      currAnswer = "";
+      updateAnswers(questionNumb, currAnswer); 
+    } else {
+      currAnswer = event.target.innerText;
+      updateAnswers(questionNumb, currAnswer);
+    }
+  }
+
   return (
     <div className="question-container">
       <p className="question">0{questionNumb}. {quizQuestions[questionNumb].question}</p>
       <div className="option-container">
-        <button className="option-btn" id="option-a">{quizQuestions[questionNumb].options.a}</button>
-        <button className="option-btn" id="option-b">{quizQuestions[questionNumb].options.b}</button>
-        <button className="option-btn" id="option-c">{quizQuestions[questionNumb].options.c}</button>
-        <button className="option-btn" id="option-d">{quizQuestions[questionNumb].options.d}</button>
+        {
+          Object.keys(options).map(option => {
+            return (
+              <button className="option-btn" key={`option-${option}`}
+                onClick={handleBtnClick}
+                style={currAnswer === options[option] ? isSelected : notSelected}
+              >{options[option]}</button>
+            )
+          })
+        }
       </div>
     </div>
   )
