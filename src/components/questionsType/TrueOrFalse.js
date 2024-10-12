@@ -1,17 +1,9 @@
 import React from 'react'
 
-import './styles/question.css';
+import QuestionList from './data/questions.js';
+import '../styles/question.css';
 
 export default function TrueOrFalse(props) {
-  // extracting question from database
-  const tof = {
-    question: "A choose the correct answer question from the database",
-    options: {
-      a: "True",
-      b: "False"
-    }
-  }
-
   let ans = "";
   const handleBtnClick = (event) => {
     if(event.target.innerText === ans) {
@@ -36,10 +28,10 @@ export default function TrueOrFalse(props) {
 
   return (
     <div className="question-container">
-      <p className="question">{props.questionNumb > 9 ? '' : '0'}{props.questionNumb}. {tof.question}</p>
+      <p className="question">{props.questionNumb > 9 ? '' : '0'}{props.questionNumb}. A question from database?</p>
       <div className="option-container">
-        <button className="option-btn" id="option-a" onClick={handleBtnClick}>{tof.options.a}</button>
-        <button className="option-btn" id="option-b" onClick={handleBtnClick}>{tof.options.b}</button>
+        <button className="option-btn" id="option-a" onClick={handleBtnClick}>True</button>
+        <button className="option-btn" id="option-b" onClick={handleBtnClick}>False</button>
       </div>
     </div>
   )
