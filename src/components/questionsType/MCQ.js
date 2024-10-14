@@ -3,7 +3,7 @@ import React from 'react'
 import '../styles/question.css';
 import { quizQuestions } from './data/questions';
 
-export default function MCQ({questionNumb, answers, updateAnswers}) {
+export default function MCQ({questionNumb, answers, setAnswers}) {
   const options = quizQuestions[questionNumb].options;
   let currAnswer = answers[questionNumb];
 
@@ -22,10 +22,10 @@ export default function MCQ({questionNumb, answers, updateAnswers}) {
   const handleBtnClick = (event) => {
     if(currAnswer === event.target.innerText) {
       currAnswer = "";
-      updateAnswers(questionNumb, currAnswer); 
+      setAnswers(a => ({...a, [questionNumb]: currAnswer})) 
     } else {
       currAnswer = event.target.innerText;
-      updateAnswers(questionNumb, currAnswer);
+      setAnswers(a => ({...a, [questionNumb]: currAnswer}))
     }
   }
 

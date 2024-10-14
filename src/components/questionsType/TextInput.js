@@ -3,10 +3,10 @@ import React from 'react'
 import '../styles/question.css';
 import { quizQuestions } from './data/questions';
 
-export default function TextInput({questionNumb, answers, updateAnswers}) {
+export default function TextInput({questionNumb, answers, setAnswers}) {
   const handleTextChange = (event) => {
     const ans = event.target.value;
-    updateAnswers(questionNumb, ans);
+    setAnswers(a => ({...a, [questionNumb]: ans}))
   }
 
   return (

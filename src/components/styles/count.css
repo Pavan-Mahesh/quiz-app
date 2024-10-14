@@ -31,6 +31,13 @@
   border-radius: 50%;
   background-color: rgb(238, 249, 255);
   border: 1px solid rgb(189, 218, 244);
+
+  will-change: transform;
+  transition: transform 0.15s;
+}
+
+.numbers-grid button:hover {
+  transform: scale(1.15);
 }
 
 .submit-btn {
