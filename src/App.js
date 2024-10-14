@@ -65,7 +65,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="level-component">
+      <div className="quiz-title">
         <div id="level-heading" style={{fontSize: '50px', fontWeight: 'bold', color: 'rgb(86, 165, 235)'}}>Quiz App</div>
       </div>
       <div className="question-component"><Question questionNumb={currQuestion} answers={answers} setAnswers={setAnswers} /></div>
