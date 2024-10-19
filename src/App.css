@@ -5,14 +5,19 @@
   grid-template-rows: repeat(2, auto);
   column-gap: 20px;
 
-  padding: 20px;
+  /* padding: 20px; */
+  padding: 0px 20px;
 }
 
 .quiz-title {
   grid-column: span 2;
   align-self: center;
   justify-self: center;
-  padding: 36px 0px;
+  
+  font-size: 50px;
+  font-weight: bold; 
+  color: rgb(86, 165, 235);
+  padding: 24px;
 }
 
 .question-component {

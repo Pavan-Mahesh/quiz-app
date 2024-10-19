@@ -38,12 +38,8 @@ function App() {
 
   const initialVisits = () => {
     const list = {}
-    for(let i = 1; i <= 20; i++) {
-      if(i === 1)
-        list[i] = true;
-      else
+    for(let i = 1; i <= 20; i++)
         list[i] = false;
-    }
 
     return list;
   }
@@ -51,23 +47,21 @@ function App() {
 
   const handleOnPrev = () => {
     if(currQuestion !== 1) {
-      setCurrQuestion(c => c - 1);
       setVisits(v => ({...v, [currQuestion]: true}))
+      setCurrQuestion(c => c - 1);
     }
   }
 
   const handleOnNext = () => {
     if(currQuestion !== 20) {
-      setCurrQuestion(c => c + 1);
       setVisits(v => ({...v, [currQuestion]: true}))
+      setCurrQuestion(c => c + 1);
     }
   }
 
   return (
     <div className="App">
-      <div className="quiz-title">
-        <div id="level-heading" style={{fontSize: '50px', fontWeight: 'bold', color: 'rgb(86, 165, 235)'}}>Quiz App</div>
-      </div>
+      <div className="quiz-title">Quiz App</div>
       <div className="question-component"><Question questionNumb={currQuestion} answers={answers} setAnswers={setAnswers} /></div>
       <div className="count-component"><Count questionNumb={currQuestion} setCurrQuestion={setCurrQuestion} answers={answers} visits={visits} setVisits={setVisits} /></div>
       <div className="move-btn-container">

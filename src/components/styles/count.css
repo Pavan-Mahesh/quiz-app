@@ -14,7 +14,7 @@
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 80px);
+  grid-template-rows: repeat(5, 75px);
   align-items: center;
   justify-items: center;
 }
