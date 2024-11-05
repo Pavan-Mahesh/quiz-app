@@ -3,9 +3,9 @@ import React from 'react'
 import '../styles/question.css';
 import { quizQuestions } from './data/questions';
 
-export default function MCQ({questionNumb, answers, setAnswers}) {
-  const options = quizQuestions[questionNumb].options;
-  let currAnswer = answers[questionNumb];
+export default function MCQ({currQuestion, answers, setAnswers}) {
+  const options = quizQuestions[currQuestion].options;
+  let currAnswer = answers[currQuestion];
 
   const notSelected = {
     color: 'black',
@@ -22,16 +22,16 @@ export default function MCQ({questionNumb, answers, setAnswers}) {
   const handleBtnClick = (event) => {
     if(currAnswer === event.target.innerText) {
       currAnswer = "";
-      setAnswers(a => ({...a, [questionNumb]: currAnswer})) 
+      setAnswers(a => ({...a, [currQuestion]: currAnswer})) 
     } else {
       currAnswer = event.target.innerText;
-      setAnswers(a => ({...a, [questionNumb]: currAnswer}))
+      setAnswers(a => ({...a, [currQuestion]: currAnswer}))
     }
   }
 
   return (
     <div className="question-container">
-      <p className="question">0{questionNumb}. {quizQuestions[questionNumb].question}</p>
+      <p className="question">0{currQuestion}. {quizQuestions[currQuestion].question}</p>
       <div className="option-container">
         {
           Object.keys(options).map(option => {

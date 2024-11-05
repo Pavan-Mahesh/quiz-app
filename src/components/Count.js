@@ -2,7 +2,7 @@ import React from 'react'
 
 import './styles/count.css'
 
-export default function Count({questionNumb, setCurrQuestion, answers, visits, setVisits}) {
+export default function Count({currQuestion, setCurrQuestion, answers, visits, setVisits}) {
   const numbers = [];
   for(let i = 1; i <= 20; i++) {
     numbers.push(i);
@@ -33,7 +33,7 @@ export default function Count({questionNumb, setCurrQuestion, answers, visits, s
   }
 
   const handleBtnClick = (event) => {
-    setVisits(v => ({...v, [questionNumb]: true}));
+    setVisits(v => ({...v, [currQuestion]: true}));
 
     const numb = parseInt(event.target.innerText);
     setCurrQuestion(numb);
@@ -45,7 +45,7 @@ export default function Count({questionNumb, setCurrQuestion, answers, visits, s
         {
           numbers.map((number) => {
             let style = defaultStyle;
-            if(number === questionNumb){ 
+            if(number === currQuestion){ 
               style = isCurrStyle;
             } else if(visits[number]) {
               if(answers[number] !== "")

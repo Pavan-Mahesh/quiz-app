@@ -3,9 +3,9 @@ import React from 'react'
 import '../styles/question.css';
 import { quizQuestions } from './data/questions.js';
 
-export default function ImageBased({questionNumb, answers, setAnswers}) {
-  const options = quizQuestions[questionNumb].options;
-  let currAnswer = answers[questionNumb];
+export default function ImageBased({currQuestion, answers, setAnswers}) {
+  const options = quizQuestions[currQuestion].options;
+  let currAnswer = answers[currQuestion];
 
   const notSelected = {
     color: 'black',
@@ -22,18 +22,18 @@ export default function ImageBased({questionNumb, answers, setAnswers}) {
   const handleBtnClick = (event) => {
     if(currAnswer === event.target.innerText) {
       currAnswer = "";
-      setAnswers(a => ({...a, [questionNumb]: currAnswer}))
+      setAnswers(a => ({...a, [currQuestion]: currAnswer}))
     } else {
       currAnswer = event.target.innerText;
-      setAnswers(a => ({...a, [questionNumb]: currAnswer}))
+      setAnswers(a => ({...a, [currQuestion]: currAnswer}))
     }
   }
 
   return (
     <div className="question-container">
-      <p className="question">{questionNumb}. {quizQuestions[questionNumb].question}</p>
+      <p className="question">{currQuestion}. {quizQuestions[currQuestion].question}</p>
       <div className="image-container">
-        <img className="image" src={quizQuestions[questionNumb].image} alt="Something went wrong"/>
+        <img className="image" src={quizQuestions[currQuestion].image} alt="Something went wrong"/>
       </div>
       <div className="image-option-container">
         {
